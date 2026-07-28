@@ -1,7 +1,7 @@
 {
   "name": "Roteiro de viagem",
   "short_name": "Roteiro",
-  "id": "/",
+  "id": "/roteiro-viagem/",
   "description": "Modelo de página para roteiros de viagem, com linha do tempo, contatos e uso sem internet.",
   "lang": "pt-BR",
   "dir": "ltr",

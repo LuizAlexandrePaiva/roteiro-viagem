@@ -9,8 +9,11 @@ dispositivos Android e iOS e permanece disponível sem conexão com a internet.
 ![Sem dependências](https://img.shields.io/badge/depend%C3%AAncias-nenhuma-success)
 ![PWA instalável](https://img.shields.io/badge/PWA-instal%C3%A1vel-blueviolet)
 ![HTML, CSS e JavaScript](https://img.shields.io/badge/stack-HTML%20%C2%B7%20CSS%20%C2%B7%20JS-lightgrey)
+[![Demonstração online](https://img.shields.io/badge/demonstra%C3%A7%C3%A3o-online-brightgreen)](https://luizalexandrepaiva.github.io/roteiro-viagem/)
 
-![Topo da página: título, contagem regressiva para a viagem e três destaques com saída, curso e retorno](docs/preview.png)
+[![Topo da página: título, contagem regressiva para a viagem e três destaques com saída, curso e retorno](docs/preview.png)](https://luizalexandrepaiva.github.io/roteiro-viagem/)
+
+<p align="center"><strong><a href="https://luizalexandrepaiva.github.io/roteiro-viagem/">Acessar a demonstração</a></strong></p>
 
 > **Aviso.** Todo o conteúdo distribuído neste repositório é fictício. Nomes de
 > estabelecimentos, endereços, telefones e datas existem exclusivamente para
@@ -81,7 +84,7 @@ execução, etapa de compilação ou gerenciador de pacotes.
 ## Execução local
 
 ```bash
-git clone https://github.com/<usuario>/roteiro-viagem.git
+git clone https://github.com/LuizAlexandrePaiva/roteiro-viagem.git
 cd roteiro-viagem
 python3 -m http.server 8000
 ```
@@ -263,23 +266,31 @@ O requisito único é hospedagem estática com HTTPS, condição necessária par
 
 Publicação por transferência do diretório em
 [app.netlify.com/drop](https://app.netlify.com/drop) ou por integração contínua
-a partir do repositório. Os arquivos `_headers` e `_redirects` são interpretados
+a partir do repositório. Nesse caso, o campo `id` do manifesto deve ser
+alterado para `"/"`, uma vez que o site passa a ser servido na raiz. Os arquivos `_headers` e `_redirects` são interpretados
 automaticamente e definem, respectivamente, o tipo MIME do manifesto e a
 política de cache do *service worker*.
 
 ### GitHub Pages
 
+A demonstração deste repositório é publicada por esse meio, em
+<https://luizalexandrepaiva.github.io/roteiro-viagem/>.
+
 Habilitar em *Settings → Pages*, indicando a branch principal e o diretório
 raiz. Duas observações se aplicam:
 
 1. Os arquivos `_headers` e `_redirects` são ignorados pela plataforma.
-2. O site é servido em subdiretório, o que exige ajuste no manifesto:
+2. O site é servido em subdiretório, o que exige que `id` no manifesto
+   corresponda ao caminho do repositório. O valor distribuído já contempla
+   essa configuração:
 
 ```json
-"id": "/<repositorio>/",
+"id": "/roteiro-viagem/",
 "start_url": "./",
 "scope": "./"
 ```
+
+Para hospedagem na raiz de um domínio, substituir `id` por `"/"`.
 
 ### Demais provedores
 
