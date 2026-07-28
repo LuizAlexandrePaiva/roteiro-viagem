@@ -1,0 +1,19 @@
+# sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editores
+.vscode/
+.idea/
+*.swp
+
+# hospedagem
+.netlify/
+.cache/
+
+# python (tools/)
+__pycache__/
+*.pyc
+.venv/
+venv/

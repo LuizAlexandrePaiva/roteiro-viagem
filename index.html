@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roteiro de viagem — modelo de página para itinerários</title>
+<meta name="description" content="Modelo de página para roteiros de viagem: linha do tempo, endereços, contatos e instalação na tela de início. Dados de demonstração.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%2316232E%27%2F%3E%3Cg%20stroke%3D%27%23EFF1EC%27%20stroke-width%3D%272.2%27%20stroke-linecap%3D%27round%27%20fill%3D%27none%27%3E%3Cpath%20d%3D%27M11.4%2011.4%20L20.6%2020.6%27%2F%3E%3Cpath%20d%3D%27M20.6%2011.4%20L11.4%2020.6%27%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%27%23EFF1EC%27%20stroke-width%3D%271.9%27%20fill%3D%27none%27%3E%3Ccircle%20cx%3D%279.2%27%20cy%3D%279.2%27%20r%3D%273.6%27%2F%3E%3Ccircle%20cx%3D%2722.8%27%20cy%3D%279.2%27%20r%3D%273.6%27%2F%3E%3Ccircle%20cx%3D%279.2%27%20cy%3D%2722.8%27%20r%3D%273.6%27%2F%3E%3Ccircle%20cx%3D%2722.8%27%20cy%3D%2722.8%27%20r%3D%273.6%27%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2716%27%20cy%3D%2716%27%20r%3D%273.1%27%20fill%3D%27%23A6215E%27%2F%3E%3C%2Fsvg%3E">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#16232E">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Roteiro">
+<meta name="application-name" content="Roteiro">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EFF1EC;
+  --paper-2:#F7F8F5;
+  --card:#FFFFFF;
+  --ink:#16232E;
+  --slate:#4E5C66;
+  --line:#BCC6BE;
+  --line-soft:#D6DDD5;
+  --mag:#A6215E;
+  --mag-soft:#F3E2EA;
+  --deep:#20465C;
+  --rule:#8E9C93;      /* separador de tabela, 2,5:1 */
+  --label:#3C4750;     /* rótulos pequenos, 8,4:1 */
+
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --display:"Archivo",var(--sans);
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+
+  --pad:clamp(1.25rem,4vw,3.25rem);
+  --maxw:64rem;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  background-image:
+    linear-gradient(to right,rgba(32,70,92,.045) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(32,70,92,.045) 1px,transparent 1px);
+  background-size:32px 32px;
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16.5px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--display);font-stretch:112%;line-height:1.04;letter-spacing:-.018em;margin:0;font-weight:700}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--mag);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+
+/* ---------- barra fixa ---------- */
+.topbar{
+  position:sticky;top:0;z-index:40;
+  background:rgba(239,241,236,.93);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex;align-items:center;gap:1.25rem;min-height:3.6rem;justify-content:space-between}
+.brand{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--slate);white-space:nowrap;text-decoration:none;flex:0 0 auto;
+}
+.brand b{color:var(--ink);font-weight:600}
+
+.topnav{
+  display:flex;align-items:center;gap:.3rem;
+  overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;-ms-overflow-style:none;padding:.45rem .1rem;
+  overscroll-behavior-x:contain;
+}
+.topnav::-webkit-scrollbar{display:none}
+.topnav.fade{
+  -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);
+          mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);
+}
+.topnav a{
+  flex:0 0 auto;display:inline-flex;align-items:baseline;gap:.34rem;
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.04em;
+  text-decoration:none;white-space:nowrap;color:var(--slate);
+  padding:.44rem .64rem;border-radius:5px;
+  border:1px solid var(--line-soft);background:rgba(255,255,255,.55);
+  transition:background .2s,border-color .2s,color .2s;
+}
+.topnav .wd{font-size:.63rem;letter-spacing:.16em;text-transform:uppercase}
+.topnav .dy{font-size:.86rem;font-weight:600;letter-spacing:0;color:var(--ink)}
+.topnav .sep{flex:0 0 auto;width:1px;height:20px;background:var(--line);margin:0 .32rem}
+
+.topnav a[aria-current="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper-2)}
+.topnav a[aria-current="true"] .dy{color:var(--paper-2)}
+.topnav a[aria-current="true"] .wd{color:rgba(239,241,236,.72)}
+.topnav a:active{transform:scale(.97)}
+
+@media (hover:hover){
+  .topnav a:hover{border-color:var(--mag);color:var(--mag);background:var(--mag-soft)}
+  .topnav a:hover .dy{color:var(--mag)}
+  .topnav a[aria-current="true"]:hover{background:var(--mag);border-color:var(--mag)}
+  .topnav a[aria-current="true"]:hover .dy,
+  .topnav a[aria-current="true"]:hover .wd{color:var(--paper-2)}
+}
+
+.progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none}
+.progress i{display:block;height:100%;width:0;background:var(--mag);transition:width .12s linear}
+
+section[id]{scroll-margin-top:4.6rem}
+
+/* ---------- capa ---------- */
+.hero{padding:clamp(3rem,9vw,6.5rem) 0 clamp(2rem,5vw,3.5rem)}
+.eyebrow{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mag);display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;
+}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--line);max-width:14rem}
+.hero h1{font-size:clamp(2.6rem,7.6vw,4.9rem);font-weight:800;font-stretch:118%;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--slate);font-weight:600}
+.lead{margin-top:1.5rem;max-width:46ch;font-size:1.06rem;color:var(--slate)}
+.chip{
+  display:inline-flex;align-items:center;gap:.55rem;margin-top:1.8rem;
+  font-family:var(--mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper-2);padding:.42rem .8rem;border-radius:100px;
+}
+.chip .dot{width:6px;height:6px;border-radius:50%;background:#7FD1A6}
+
+.facts{
+  margin-top:clamp(2.4rem,6vw,3.6rem);
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(3,1fr);
+}
+.fact{padding:1.25rem 1.25rem 1.35rem 0}
+.fact + .fact{border-left:1px solid var(--line);padding-left:1.25rem}
+.fact .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+.fact .v{font-family:var(--display);font-stretch:112%;font-size:clamp(1.15rem,2.6vw,1.5rem);font-weight:700;margin-top:.5rem}
+.fact .s{font-size:.86rem;color:var(--slate);margin-top:.2rem}
+
+/* ---------- dias ---------- */
+.day{padding:clamp(3rem,7vw,5rem) 0 0}
+.day-head{display:flex;align-items:flex-end;gap:1.1rem;padding-bottom:1.4rem;border-bottom:1px solid var(--ink)}
+.day-num{
+  font-family:var(--display);font-stretch:125%;font-weight:800;
+  font-size:clamp(3.2rem,10vw,5.4rem);line-height:.78;letter-spacing:-.04em;color:var(--ink);
+}
+.day-meta h2{font-size:clamp(1.15rem,3vw,1.5rem);font-weight:700}
+.day-meta p{font-family:var(--mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);margin-top:.4rem}
+
+.legend{
+  display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1rem;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);
+}
+.legend span{display:inline-flex;align-items:center;gap:.45rem}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.legend .fx{background:var(--mag)}
+.legend .sg{border:1.5px solid var(--slate);background:transparent}
+
+/* trilha */
+.legs{position:relative;padding:2rem 0 0}
+ol.steps{list-style:none;margin:0;padding:0}
+.rail{position:absolute;left:5.9rem;top:2.42rem;bottom:2.2rem;width:1px;background:var(--line)}
+.rail i{position:absolute;inset:0 auto auto 0;width:1px;height:0;background:var(--mag);transition:height .25s linear}
+
+.leg{position:relative;display:grid;grid-template-columns:5.9rem 1fr;gap:0 2rem;padding-bottom:2.2rem}
+.leg .t{
+  font-family:var(--mono);font-size:.95rem;font-weight:500;letter-spacing:-.01em;
+  color:var(--ink);padding-top:.05rem;text-align:right;padding-right:1.15rem;
+}
+.leg .t small{display:block;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-top:.25rem;font-weight:400}
+.leg .body{position:relative}
+.leg .body::before{
+  content:"";position:absolute;left:calc(-2rem - 4px);top:.42rem;width:9px;height:9px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--slate);z-index:2;transition:background .3s,border-color .3s,transform .3s;
+}
+.leg.fixed .body::before{border-color:var(--mag)}
+.leg.lit .body::before{transform:scale(1.15)}
+.leg.fixed.lit .body::before{background:var(--mag)}
+.leg h3{font-size:1.12rem;font-weight:700}
+.leg .note{color:var(--slate);margin-top:.35rem;max-width:52ch;font-size:.95rem}
+
+/* cartão de local */
+.place{
+  margin-top:1rem;background:var(--card);border:1px solid var(--line-soft);
+  border-radius:4px;padding:1.15rem 1.25rem 1.25rem;
+  box-shadow:0 1px 0 rgba(22,35,46,.04);
+}
+.place .ph{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.place .pn{font-family:var(--display);font-stretch:110%;font-weight:700;font-size:1.02rem}
+.place .tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mag)}
+.place .pd{color:var(--slate);font-size:.93rem;margin-top:.5rem;max-width:56ch}
+.dl{margin:.95rem 0 0;display:grid;grid-template-columns:6.2rem 1fr;gap:.42rem 1rem;border-top:1px solid var(--line-soft);padding-top:.85rem}
+.dl dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);padding-top:.18rem}
+.dl dd{margin:0;font-size:.92rem}
+.dl dd b{font-weight:600}
+.maplink{
+  display:inline-flex;align-items:center;gap:.4rem;margin-top:.95rem;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--deep);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:.15rem;
+}
+.maplink:hover{color:var(--mag);border-color:var(--mag)}
+
+/* ---------- bases e contatos ---------- */
+.block{padding:clamp(3rem,7vw,5rem) 0 0}
+.block > h2{font-size:clamp(1.5rem,4vw,2.1rem);padding-bottom:1.1rem;border-bottom:1px solid var(--ink)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.6rem}
+.base{background:var(--card);border:1px solid var(--line-soft);border-radius:4px;padding:1.4rem 1.4rem 1.5rem}
+.base .tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mag)}
+.base h3{font-size:1.2rem;margin-top:.55rem}
+
+table.contacts{width:100%;border-collapse:collapse;margin-top:1.5rem}
+table.contacts th{
+  text-align:left;font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--label);font-weight:500;padding:0 0 .7rem;border-bottom:1px solid var(--rule)
+}
+table.contacts th:last-child{text-align:right}
+table.contacts td{padding:.95rem 0;border-bottom:1px solid var(--rule);vertical-align:middle;font-size:1rem}
+table.contacts td:last-child{text-align:right;padding-left:1rem;white-space:nowrap}
+table.contacts .who{display:block;font-weight:500;color:var(--ink)}
+table.contacts .sub{display:block;color:var(--slate);font-size:.86rem;margin-top:.15rem}
+
+a.tel{
+  display:inline-flex;align-items:center;justify-content:flex-start;gap:.5rem;
+  min-width:11.6rem;
+  font-family:var(--mono);font-size:.92rem;font-weight:500;letter-spacing:-.01em;
+  color:var(--ink);text-decoration:none;
+  background:var(--card);border:1px solid var(--rule);border-radius:5px;
+  padding:.52rem .72rem;min-height:2.5rem;
+  transition:background .18s,border-color .18s,color .18s;
+}
+a.tel svg{width:13px;height:13px;flex:0 0 auto;fill:var(--mag);transition:fill .18s}
+a.tel:active{transform:scale(.98)}
+@media (hover:hover){
+  a.tel:hover{background:var(--ink);border-color:var(--ink);color:var(--paper-2)}
+  a.tel:hover svg{fill:var(--paper-2)}
+}
+
+.alerts{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:.9rem}
+.alerts li{
+  background:var(--paper-2);border:1px solid var(--line-soft);border-left:2px solid var(--mag);
+  border-radius:0 4px 4px 0;padding:1rem 1.15rem;font-size:.95rem;
+}
+.alerts b{font-weight:600}
+
+footer{margin-top:clamp(3.5rem,8vw,6rem);border-top:1px solid var(--ink);padding:1.5rem 0 3rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--slate)}
+
+/* ---------- adicionar à tela de início ---------- */
+.a2hs{
+  position:fixed;left:50%;bottom:max(1rem,env(safe-area-inset-bottom));
+  transform:translate(-50%,140%);
+  z-index:60;width:min(26rem,calc(100vw - 1.6rem));
+  background:var(--card);border:1px solid var(--line);border-radius:6px;
+  box-shadow:0 10px 30px rgba(22,35,46,.16);
+  padding:.95rem 1rem 1rem;
+  display:none;gap:.85rem;align-items:flex-start;
+  transition:transform .38s cubic-bezier(.22,1,.36,1),opacity .3s;
+  opacity:0;
+}
+.a2hs.show{display:flex;transform:translate(-50%,0);opacity:1}
+.a2hs .ico{flex:0 0 auto;width:38px;height:38px;border-radius:9px;overflow:hidden;background:var(--ink)}
+.a2hs .ico svg{display:block;width:100%;height:100%}
+.a2hs .tx{flex:1 1 auto;min-width:0}
+.a2hs .hd{font-family:var(--display);font-stretch:110%;font-weight:700;font-size:.98rem;line-height:1.2}
+.a2hs .sb{color:var(--slate);font-size:.86rem;margin-top:.28rem}
+.a2hs .sb kbd{
+  font-family:var(--mono);font-size:.78rem;background:var(--paper);border:1px solid var(--line-soft);
+  border-radius:3px;padding:.05rem .3rem;color:var(--ink)
+}
+.a2hs .row{display:flex;gap:.5rem;margin-top:.8rem;flex-wrap:wrap}
+.a2hs button{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;
+  border-radius:3px;padding:.5rem .85rem;cursor:pointer;border:1px solid transparent;
+}
+.a2hs .go{background:var(--ink);color:var(--paper-2);border-color:var(--ink)}
+.a2hs .go:hover{background:var(--mag);border-color:var(--mag)}
+.a2hs .no{background:transparent;color:var(--slate);border-color:var(--line)}
+.a2hs .no:hover{color:var(--ink);border-color:var(--slate)}
+.footlink{
+  background:none;border:0;padding:0;cursor:pointer;color:inherit;
+  font:inherit;letter-spacing:inherit;text-transform:inherit;
+  border-bottom:1px solid var(--line);
+}
+.footlink:hover{color:var(--mag);border-color:var(--mag)}
+@media (prefers-reduced-motion:reduce){ .a2hs{transition:none} }
+@media print{ .a2hs{display:none!important} }
+
+/* revelação */
+.rv{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.rv.on{opacity:1;transform:none}
+
+@media (max-width:720px){
+  .facts{grid-template-columns:1fr}
+  .fact{padding:1rem 0}
+  .fact + .fact{border-left:0;border-top:1px solid var(--line-soft);padding-left:0}
+  .duo{grid-template-columns:1fr}
+  .leg{grid-template-columns:3.9rem 1fr;gap:0 1.5rem}
+  .rail{left:3.9rem}
+  .leg .t{font-size:.86rem;padding-right:.8rem}
+  .leg .body::before{left:calc(-1.5rem - 4px)}
+  .dl{grid-template-columns:1fr;gap:.15rem}
+  .dl dt{padding-top:.5rem}
+  table.contacts thead{display:none}
+  table.contacts tr,table.contacts td{display:block;width:100%}
+  table.contacts td{border:0;padding:0}
+  table.contacts tr{padding:.95rem 0;border-bottom:1px solid var(--rule)}
+  table.contacts td:last-child{text-align:left;padding-left:0;margin-top:.6rem}
+  .topbar .wrap{padding-inline:0;gap:0}
+  .brand{display:none}
+  .topnav{width:100%;padding-inline:var(--pad)}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .rail i{transition:none}
+  *{scroll-behavior:auto!important}
+}
+html{scroll-behavior:smooth}
+
+@media print{
+  body{background:#fff;font-size:11pt}
+  .topbar,.maplink{display:none}
+  .day,.block{page-break-inside:avoid}
+  .place,.base{border:1px solid #ccc}
+  .rail i{display:none}
+  .rv{opacity:1!important;transform:none!important}
+  .leg .body::before{background:#fff}
+}
+</style>
+<noscript><style>.rv{opacity:1;transform:none}.rail i{height:100%}</style></noscript>
+<script>
+/* captura o convite de instalação do Chrome assim que ele dispara,
+   antes de o restante da página carregar */
+window.__bip = null;
+window.addEventListener('beforeinstallprompt', function (e) {
+  e.preventDefault();
+  window.__bip = e;
+  window.dispatchEvent(new Event('bip-ready'));
+});
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#topo">Roteiro <b>2027</b></a>
+    <nav class="topnav" id="topnav" aria-label="Seções do roteiro">
+      <a href="#dia-1" data-sec="dia-1"><span class="wd">Sex</span><span class="dy">05</span></a>
+      <a href="#dia-2" data-sec="dia-2"><span class="wd">Sáb</span><span class="dy">06</span></a>
+      <a href="#dia-3" data-sec="dia-3"><span class="wd">Dom</span><span class="dy">07</span></a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="#bases"    data-sec="bases">Bases</a>
+      <a href="#contatos" data-sec="contatos">Contatos</a>
+      <a href="#avisos"   data-sec="avisos">Avisos</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+</header>
+
+<main>
+
+<section class="hero" id="topo">
+  <div class="wrap">
+    <p class="eyebrow">Roteiro de viagem · 5 – 7 mar 2027</p>
+    <h1>Curso de drones <em>em São Paulo</em></h1>
+    <p class="lead">Três dias, dois ônibus, quatro horas de curso e uma tarde livre.
+      Esta página reúne tudo: horários, endereços e telefones, para a família acompanhar
+      cada etapa. <strong>Os dados abaixo são fictícios</strong> e servem de exemplo.</p>
+    <p class="chip" id="status"><span class="dot"></span><span id="statusText">Carregando…</span></p>
+
+    <div class="facts">
+      <div class="fact">
+        <div class="k">Saída</div>
+        <div class="v">05/03 · 21h</div>
+        <div class="s">Rodoviária de Belo Horizonte · Viação Exemplo</div>
+      </div>
+      <div class="fact">
+        <div class="k">Curso</div>
+        <div class="v">06/03 · 08h–12h</div>
+        <div class="s">Aeroclube Exemplo · Escola Exemplo</div>
+      </div>
+      <div class="fact">
+        <div class="k">Retorno</div>
+        <div class="v">07/03 · 19h</div>
+        <div class="s">Chegada a Belo Horizonte · Rota Exemplo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DIA 1 — duplique uma seção "day" inteira para cada dia da viagem.
+     Cada etapa é um item da lista "steps":
+       classe "leg fixed" -> marcador cheio  (compromisso marcado)
+       classe "leg"       -> marcador vazado (sugestão)
+     ============================================================ -->
+<section class="day" id="dia-1">
+  <div class="wrap">
+    <div class="day-head">
+      <div class="day-num">05</div>
+      <div class="day-meta">
+        <h2>Sexta-feira</h2>
+        <p>Belo Horizonte → São Paulo</p>
+      </div>
+    </div>
+    <div class="legend">
+      <span><i class="fx"></i> Compromisso marcado</span>
+      <span><i class="sg"></i> Sugestão</span>
+    </div>
+
+    <div class="legs">
+      <div class="rail"><i></i></div>
+      <ol class="steps">
+
+      <li class="leg rv">
+        <div class="t">20h30<small>sugerido</small></div>
+        <div class="body">
+          <h3>Chegada à rodoviária</h3>
+          <p class="note">Meia hora de folga antes do embarque, tempo suficiente para despachar
+            a bagagem com calma.</p>
+        </div>
+      </li>
+
+      <li class="leg fixed rv">
+        <div class="t">21h00<small>fixo</small></div>
+        <div class="body">
+          <h3>Saída do ônibus para São Paulo</h3>
+          <p class="note">Viação Exemplo. A viagem leva cerca de oito horas, com chegada prevista
+            para as 5h da manhã de sábado.</p>
+        </div>
+      </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- DIA 2 — exemplo com cartão de local (.place) -->
+<section class="day" id="dia-2">
+  <div class="wrap">
+    <div class="day-head">
+      <div class="day-num">06</div>
+      <div class="day-meta">
+        <h2>Sábado</h2>
+        <p>Curso pela manhã · tarde livre</p>
+      </div>
+    </div>
+
+    <div class="legs">
+      <div class="rail"><i></i></div>
+      <ol class="steps">
+
+      <li class="leg fixed rv">
+        <div class="t">05h00<small>aprox.</small></div>
+        <div class="body">
+          <h3>Desembarque no Terminal Tietê</h3>
+          <p class="note">Terminal Rodoviário Tietê, zona norte. Do terminal até o hotel são
+            cerca de 25 minutos de carro.</p>
+        </div>
+      </li>
+
+      <li class="leg fixed rv">
+        <div class="t">06h00<small>combinado</small></div>
+        <div class="body">
+          <h3>Check-in antecipado e café da manhã</h3>
+          <p class="note">O check-in fora do horário está acordado com o hotel: dá para subir com
+            a bagagem, tomar banho e café antes de seguir para a aula.</p>
+        </div>
+      </li>
+
+      <li class="leg fixed rv">
+        <div class="t">08h00<small>fixo</small></div>
+        <div class="body">
+          <h3>Início do curso de drones</h3>
+          <p class="note">Quatro horas de aula com a Escola Exemplo, na pista do Aeroclube
+            Exemplo.</p>
+        </div>
+      </li>
+
+      <li class="leg fixed rv">
+        <div class="t">12h00<small>fixo</small></div>
+        <div class="body">
+          <h3>Término do curso e volta ao hotel</h3>
+          <p class="note">Tempo para deixar o equipamento no quarto e trocar de roupa antes do
+            almoço.</p>
+        </div>
+      </li>
+
+      <li class="leg rv">
+        <div class="t">14h00<small>sugerido</small></div>
+        <div class="body">
+          <h3>Almoço</h3>
+          <p class="note">Do hotel até o restaurante são cerca de 25 minutos.</p>
+
+          <!-- Cartão de local: use para lugares que precisam de endereço,
+               horário de funcionamento, telefone e link de mapa. -->
+          <div class="place">
+            <div class="ph">
+              <div class="pn">Restaurante Exemplo</div>
+              <div class="tag">Almoço · reserva</div>
+            </div>
+            <p class="pd">Descreva o lugar em duas ou três linhas: o que ele é, por que está no
+              roteiro e algum detalhe prático que ajude na hora de decidir.</p>
+            <dl class="dl">
+              <dt>Endereço</dt><dd>Av. das Nações, 1200 — Centro, São Paulo (SP)</dd>
+              <dt>Sábado</dt><dd><b>11h30 às 16h</b> no almoço</dd>
+              <dt>Telefone</dt><dd><a href="tel:+551155550100">(11) 5555-0100</a></dd>
+              <dt>Plano B</dt><dd>Alternativa a dez minutos dali, caso esteja lotado</dd>
+            </dl>
+            <a class="maplink" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/search/?api=1&amp;query=Avenida%20das%20Na%C3%A7%C3%B5es%201200%20S%C3%A3o%20Paulo">Abrir no mapa →</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="leg rv">
+        <div class="t">17h00<small>sugerido</small></div>
+        <div class="body">
+          <h3>Passeio no fim da tarde</h3>
+          <p class="note">Um horário escolhido por um motivo concreto costuma valer mais que uma
+            lista de opções: aqui, pegar o pôr do sol antes de voltar.</p>
+        </div>
+      </li>
+
+      <li class="leg rv">
+        <div class="t">19h30<small>sugerido</small></div>
+        <div class="body">
+          <h3>Volta ao hotel</h3>
+          <p class="note">Vale deixar a mala pronta ainda hoje: no domingo a manhã é curta.</p>
+        </div>
+      </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- DIA 3 -->
+<section class="day" id="dia-3">
+  <div class="wrap">
+    <div class="day-head">
+      <div class="day-num">07</div>
+      <div class="day-meta">
+        <h2>Domingo</h2>
+        <p>São Paulo → Belo Horizonte</p>
+      </div>
+    </div>
+
+    <div class="legs">
+      <div class="rail"><i></i></div>
+      <ol class="steps">
+
+      <li class="leg rv">
+        <div class="t">07h30<small>sugerido</small></div>
+        <div class="body">
+          <h3>Check-out do hotel</h3>
+          <p class="note">Com a mala no carro, sobra a manhã livre antes do embarque.</p>
+        </div>
+      </li>
+
+      <li class="leg rv">
+        <div class="t">09h45<small>sugerido</small></div>
+        <div class="body">
+          <h3>Chegada ao ponto de embarque</h3>
+          <p class="note">Meia hora de antecedência é o suficiente, mas não menos do que isso: o
+            embarque não é no mesmo terminal da ida.</p>
+          <a class="maplink" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&amp;query=Terminal%20Barra%20Funda%20S%C3%A3o%20Paulo">Abrir no mapa →</a>
+        </div>
+      </li>
+
+      <li class="leg fixed rv">
+        <div class="t">10h15<small>fixo</small></div>
+        <div class="body">
+          <h3>Saída do ônibus</h3>
+          <p class="note">Rota Exemplo.</p>
+        </div>
+      </li>
+
+      <li class="leg fixed rv">
+        <div class="t">19h00<small>aprox.</small></div>
+        <div class="body">
+          <h3>Chegada a Belo Horizonte</h3>
+          <p class="note">Fim da viagem.</p>
+        </div>
+      </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- BASES — cartões fixos: onde dormir, onde acontece o compromisso -->
+<section class="block" id="bases">
+  <div class="wrap">
+    <h2>As duas bases</h2>
+    <div class="duo">
+      <div class="base rv">
+        <div class="tag">Hospedagem</div>
+        <h3>Hotel Exemplo</h3>
+        <dl class="dl">
+          <dt>Endereço</dt><dd>R. das Palmeiras, 350 — Pinheiros, São Paulo (SP)</dd>
+          <dt>Diária</dt><dd>De 06/03 para 07/03/2027</dd>
+          <dt>Telefone</dt><dd><a href="tel:+551155550101">(11) 5555-0101</a></dd>
+          <dt>Por perto</dt><dd>Estação de metrô a dez minutos a pé</dd>
+        </dl>
+        <a class="maplink" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20das%20Palmeiras%20350%20Pinheiros%20S%C3%A3o%20Paulo">Abrir no mapa →</a>
+      </div>
+
+      <div class="base rv">
+        <div class="tag">Local do curso</div>
+        <h3>Aeroclube Exemplo</h3>
+        <dl class="dl">
+          <dt>Endereço</dt><dd>Estrada do Campo, 1687 — Zona Noroeste, São Paulo (SP)</dd>
+          <dt>Quando</dt><dd>Sábado, 06/03, das 8h às 12h</dd>
+          <dt>Telefone</dt><dd><a href="tel:+551155550102">(11) 5555-0102</a></dd>
+          <dt>Estrutura</dt><dd>Pista, lanchonete e estacionamento</dd>
+        </dl>
+        <a class="maplink" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&amp;query=Estrada%20do%20Campo%20S%C3%A3o%20Paulo">Abrir no mapa →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTATOS ================= -->
+<section class="block" id="contatos">
+  <div class="wrap">
+    <h2>Contatos</h2>
+    <table class="contacts">
+      <thead>
+        <tr><th>Quem</th><th>Telefone</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="who">Escola Exemplo</span><span class="sub">Organização do curso</span></td>
+          <td><a class="tel" href="tel:+551155550103"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z'/></svg><span>(11) 5555-0103</span></a></td>
+        </tr>
+        <tr>
+          <td><span class="who">Aeroclube Exemplo</span><span class="sub">Local das aulas</span></td>
+          <td><a class="tel" href="tel:+551155550102"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z'/></svg><span>(11) 5555-0102</span></a></td>
+        </tr>
+        <tr>
+          <td><span class="who">Hotel Exemplo</span><span class="sub">Hospedagem</span></td>
+          <td><a class="tel" href="tel:+551155550101"><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z'/></svg><span>(11) 5555-0101</span></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= AVISOS ================= -->
+<section class="block" id="avisos">
+  <div class="wrap">
+    <h2>O que não pode passar batido</h2>
+    <ul class="alerts">
+      <li class="rv"><b>Ida e volta saem de lugares diferentes.</b> Use este bloco para o tipo de
+        detalhe que costuma passar batido e custa caro: terminais distintos, uma janela apertada,
+        um endereço longe do que se imagina.</li>
+      <li class="rv"><b>A manhã do último dia é curta.</b> Entre o check-out e a saída do ônibus
+        sobra pouco mais de uma hora. Se o trânsito atrapalhar, o passeio é o item que sai do
+        roteiro — não o ônibus.</li>
+      <li class="rv"><b>Horários mudam.</b> Confirme por telefone na véspera. Um roteiro publicado
+        envelhece; uma ligação de um minuto, não.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+
+<aside class="a2hs" id="a2hs" role="dialog" aria-labelledby="a2hsTitle" aria-live="polite">
+  <div class="ico"><svg viewBox='0 0 32 32' aria-hidden='true'><rect width='32' height='32' fill='#16232E'/><g stroke='#EFF1EC' stroke-width='2.2' stroke-linecap='round' fill='none'><path d='M11.4 11.4 L20.6 20.6'/><path d='M20.6 11.4 L11.4 20.6'/></g><g stroke='#EFF1EC' stroke-width='1.9' fill='none'><circle cx='9.2' cy='9.2' r='3.6'/><circle cx='22.8' cy='9.2' r='3.6'/><circle cx='9.2' cy='22.8' r='3.6'/><circle cx='22.8' cy='22.8' r='3.6'/></g><circle cx='16' cy='16' r='3.1' fill='#A6215E'/></svg></div>
+  <div class="tx">
+    <div class="hd" id="a2hsTitle">Deixe o roteiro na tela de início</div>
+    <div class="sb" id="a2hsBody">Assim ele abre em um toque durante a viagem, mesmo sem internet.</div>
+    <div class="row">
+      <button class="go" id="a2hsGo" type="button">Adicionar</button>
+      <button class="no" id="a2hsNo" type="button">Agora não</button>
+    </div>
+  </div>
+</aside>
+
+<footer>
+  <div class="wrap">
+    <span>Roteiro de viagem · dados de exemplo</span>
+    <span><button class="footlink" type="button" id="a2hsOpen">Adicionar à tela de início</button> · 05/03 – 07/03/2027</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* contagem regressiva ------------------------------------------------ */
+  /* ---- CONFIGURE AQUI: início e fim da viagem (ISO 8601 com fuso) ---- */
+  var TRIP_START = '2027-03-05T21:00:00-03:00';
+  var TRIP_END   = '2027-03-07T19:00:00-03:00';
+
+  var el = document.getElementById('statusText');
+  if (el) {
+    var start = new Date(TRIP_START);
+    var end   = new Date(TRIP_END);
+    var now   = new Date();
+    var txt;
+    if (now < start) {
+      var dias = Math.ceil((start - now) / 86400000);
+      txt = dias <= 1 ? 'A viagem começa amanhã' : 'Faltam ' + dias + ' dias para a viagem';
+    } else if (now <= end) {
+      txt = 'Viagem em andamento';
+    } else {
+      txt = 'Viagem concluída';
+    }
+    el.textContent = txt;
+  }
+
+  /* revelação ao rolar -------------------------------------------------- */
+  var revs = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    revs.forEach(function(n){ n.classList.add('on'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.15 });
+    revs.forEach(function(n){ io.observe(n); });
+  }
+
+  /* trilha que se desenha ao rolar -------------------------------------- */
+  var lists = Array.prototype.slice.call(document.querySelectorAll('.legs'));
+  function draw(){
+    var mark = window.innerHeight * 0.62;
+    lists.forEach(function(list){
+      var rail = list.querySelector('.rail i');
+      if (!rail) return;
+      var box = list.querySelector('.rail').getBoundingClientRect();
+      var pct = (mark - box.top) / (box.height || 1);
+      pct = Math.max(0, Math.min(1, pct));
+      rail.style.height = (pct * 100) + '%';
+      list.querySelectorAll('.leg').forEach(function(leg){
+        if (leg.getBoundingClientRect().top < mark) leg.classList.add('lit');
+        else leg.classList.remove('lit');
+      });
+    });
+  }
+  if (reduce) {
+    lists.forEach(function(l){
+      var r = l.querySelector('.rail i'); if (r) r.style.height = '100%';
+      l.querySelectorAll('.leg').forEach(function(g){ g.classList.add('lit'); });
+    });
+  } else {
+    var ticking = false;
+    function onScroll(){
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){ draw(); ticking = false; });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    draw();
+  }
+
+  /* adicionar à tela de início ------------------------------------------ */
+  var bar    = document.getElementById('a2hs');
+  var goBtn  = document.getElementById('a2hsGo');
+  var noBtn  = document.getElementById('a2hsNo');
+  var openBtn= document.getElementById('a2hsOpen');
+  var bodyEl = document.getElementById('a2hsBody');
+  var deferred = window.__bip || null, dismissed = false;
+
+  function standalone(){
+    return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches)
+        || window.navigator.standalone === true;
+  }
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua)
+           || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isSafari = /^((?!chrome|android|crios|fxios|edgios).)*safari/i.test(ua);
+
+  function showBar(force){
+    if (!bar || standalone()) return;
+    if (dismissed && !force) return;
+    if (deferred) {
+      bodyEl.innerHTML = 'Assim ele abre em um toque durante a viagem, mesmo sem internet.';
+      goBtn.textContent = 'Adicionar';
+    } else if (isIOS) {
+      bodyEl.innerHTML = 'No Safari, toque em <kbd>Compartilhar</kbd> e escolha '
+                       + '<kbd>Adicionar à Tela de Início</kbd>. O ícone do drone vai junto.';
+      goBtn.textContent = 'Entendi';
+    } else {
+      bodyEl.innerHTML = 'No Chrome, abra o menu <kbd>⋮</kbd> e escolha '
+                       + '<kbd>Instalar aplicativo</kbd>.';
+      goBtn.textContent = 'Entendi';
+    }
+    bar.classList.add('show');
+  }
+  function hideBar(){ if (bar) bar.classList.remove('show'); }
+
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    deferred = e;
+    showBar(false);
+  });
+  window.addEventListener('bip-ready', function(){
+    deferred = window.__bip;
+    showBar(false);
+  });
+  if (deferred) setTimeout(function(){ showBar(false); }, 1500);
+
+  if (goBtn) goBtn.addEventListener('click', function(){
+    if (deferred) {
+      deferred.prompt();
+      deferred.userChoice.then(function(){ deferred = null; hideBar(); });
+    } else {
+      hideBar();
+    }
+  });
+  if (noBtn) noBtn.addEventListener('click', function(){ dismissed = true; hideBar(); });
+  if (openBtn) openBtn.addEventListener('click', function(){ showBar(true); });
+  if (openBtn && standalone()) openBtn.style.display = 'none';
+
+  /* o Safari não dispara beforeinstallprompt: mostra a instrução por conta própria */
+  if (isIOS && isSafari && !standalone()) {
+    setTimeout(function(){ showBar(false); }, 2200);
+  }
+
+  window.addEventListener('appinstalled', function(){
+    dismissed = true; hideBar();
+    if (openBtn) openBtn.style.display = 'none';
+  });
+
+  /* disponível sem internet quando a página estiver hospedada */
+  if ('serviceWorker' in navigator &&
+      (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('sw.js').catch(function(){});
+    });
+  }
+
+  /* barra: seção atual, rolagem do trilho e progresso -------------------- */
+  var nav   = document.getElementById('topnav');
+  var prog  = document.getElementById('prog');
+  var links = nav ? Array.prototype.slice.call(nav.querySelectorAll('a[data-sec]')) : [];
+  var secs  = links.map(function(a){ return document.getElementById(a.getAttribute('data-sec')); });
+
+  function fadeCheck(){
+    if (!nav) return;
+    nav.classList.toggle('fade', nav.scrollWidth > nav.clientWidth + 4);
+  }
+
+  function spy(){
+    if (prog){
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? (window.pageYOffset / max) * 100 : 0;
+      prog.style.width = Math.max(0, Math.min(100, pct)) + '%';
+    }
+    if (!links.length) return;
+
+    var line = 96, idx = -1;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i] && secs[i].getBoundingClientRect().top <= line) idx = i;
+    }
+    for (var j = 0; j < links.length; j++){
+      if (j === idx) links[j].setAttribute('aria-current','true');
+      else links[j].removeAttribute('aria-current');
+    }
+    if (idx > -1 && nav){
+      var chip = links[idx];
+      var l = chip.offsetLeft, r = l + chip.offsetWidth;
+      if (l < nav.scrollLeft + 8 || r > nav.scrollLeft + nav.clientWidth - 8){
+        var target = Math.max(0, l - 16);
+        if (nav.scrollTo) nav.scrollTo({ left: target, behavior: reduce ? 'auto' : 'smooth' });
+        else nav.scrollLeft = target;
+      }
+    }
+  }
+
+  var navTick = false;
+  window.addEventListener('scroll', function(){
+    if (navTick) return;
+    navTick = true;
+    requestAnimationFrame(function(){ spy(); navTick = false; });
+  }, { passive: true });
+  window.addEventListener('resize', function(){ fadeCheck(); spy(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fadeCheck);
+  fadeCheck(); spy();
+})();
+</script>
+</body>
+</html>
